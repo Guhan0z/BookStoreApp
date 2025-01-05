@@ -3,9 +3,9 @@ name : catalog-service
 on:
   push:
     paths:
-      -catalog-service/**
+      - catalog-service/**
     branches:
-      '**'
+      - '**'
 
 jobs:
   build:
