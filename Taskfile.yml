@@ -5,6 +5,7 @@ vars:
   MVNW: '{{if eq .GOOS "windows"}}mvnw.cmd{{else}}./mvnw{{end}}'
   DC_DIR: "docker-compose"
   INFRA_DC_FILE: "{{.DC_DIR}}/infra.yml"
+  SLEEP_CMD: '{{if eq .GOOS "windows"}}timeout{{else}}sleep{{end}}'
 
 
 tasks:

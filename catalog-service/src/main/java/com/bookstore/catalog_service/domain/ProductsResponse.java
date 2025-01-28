@@ -1,4 +1,13 @@
 package com.bookstore.catalog_service.domain;
 
-public record ProductsResponse() {
-}
+import java.util.List;
+
+public record ProductsResponse(
+        List<ProductDTO> productList,
+        long totalElements,
+        int totalPages,
+        int pageNumber,
+        boolean isFirst,
+        boolean isLast,
+        boolean hasNext,
+        boolean hasPrevious) {}
