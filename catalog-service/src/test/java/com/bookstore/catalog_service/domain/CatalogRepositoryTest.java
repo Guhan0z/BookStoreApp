@@ -44,6 +44,6 @@ class CatalogRepositoryTest {
     @Test
     void shouldGetAllProducts() {
         List<ProductEntity> products = catalogRepository.findAll();
-        assertThat(products).hasSize(12);
+        assertThat(products).hasSize(15);
     }
 }
