@@ -34,7 +34,7 @@ public class CatalogService {
                 pagedResult.getContent(),
                 pagedResult.getTotalElements(),
                 pagedResult.getTotalPages(),
-                pagedResult.getNumber(),
+                pagedResult.getNumber() + 1,
                 pagedResult.isFirst(),
                 pagedResult.isLast(),
                 pagedResult.hasNext(),

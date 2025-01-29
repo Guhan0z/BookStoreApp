@@ -1,9 +1,9 @@
 package com.bookstore.catalog_service;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.test.context.TestPropertySource;
 
-@PropertySource(value = "application-dev.yml")
+@TestPropertySource(locations = {"classpath:application-dev.yml", "classpath:messages.properties"})
 public class TestCatalogServiceApplication {
 
     public static void main(String[] args) {

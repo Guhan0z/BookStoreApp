@@ -18,12 +18,13 @@ class CatalogController {
     }
 
     @GetMapping
-    ProductsResponse getProducts(@RequestParam("pageNo") int pageNo) {
+    ProductsResponse getProducts(@RequestParam(value = "pageNo", defaultValue = "1") int pageNo) {
         return catalogService.getProducts(pageNo);
     }
 
     @GetMapping("/{code}")
     ResponseEntity<ProductDTO> getProductByCode(@PathVariable(name = "code") String code) {
-        return new ResponseEntity<>(catalogService.getProductByCode(code), HttpStatus.OK);
+//        return new ResponseEntity<>(catalogService.getProductByCode(code), HttpStatus.OK);
+        return ResponseEntity.ok(catalogService.getProductByCode(code));
     }
 }
