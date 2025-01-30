@@ -1,4 +1,4 @@
-name : 'book-store-app'
+name : 'book-store-app-infra'
 services:
   catalog-db:
     image: postgres:17-alpine

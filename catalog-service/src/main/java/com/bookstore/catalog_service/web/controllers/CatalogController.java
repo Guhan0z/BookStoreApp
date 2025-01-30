@@ -3,7 +3,6 @@ package com.bookstore.catalog_service.web.controllers;
 import com.bookstore.catalog_service.domain.CatalogService;
 import com.bookstore.catalog_service.domain.ProductDTO;
 import com.bookstore.catalog_service.domain.ProductsResponse;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +23,7 @@ class CatalogController {
 
     @GetMapping("/{code}")
     ResponseEntity<ProductDTO> getProductByCode(@PathVariable(name = "code") String code) {
-//        return new ResponseEntity<>(catalogService.getProductByCode(code), HttpStatus.OK);
+        //        return new ResponseEntity<>(catalogService.getProductByCode(code), HttpStatus.OK);
         return ResponseEntity.ok(catalogService.getProductByCode(code));
     }
 }

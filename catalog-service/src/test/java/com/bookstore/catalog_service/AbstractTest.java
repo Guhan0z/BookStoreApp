@@ -15,6 +15,6 @@ public class AbstractTest {
 
     @BeforeEach
     void setUp() {
-        RestAssured.port =  port;
+        RestAssured.port = port;
     }
 }
