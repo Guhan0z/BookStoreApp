@@ -41,6 +41,6 @@ jobs:
 
       - name: Build and push DockerImage
         run: |
-          ./mvnw -pl catalog-service spring-boot:build-image -DskipTests
+          ./mvnw spring-boot:build-image -DskipTests
           echo "Pushing the image $DOCKER_IMAGE_NAME to Docker Hub..."
           docker push $DOCKER_IMAGE_NAME
