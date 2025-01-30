@@ -40,7 +40,7 @@ jobs:
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
       - name: Build and push DockerImage
-        with:
-          run:
-            ./mvnw -pl catalog-service spring-boot:build-image -DskipTests
-            docker push $DOCKER_IMAGE_NAME
+        run: |
+          ./mvnw -pl catalog-service spring-boot:build-image -DskipTests
+          echo "Pushing the image $DOCKER_IMAGE_NAME to Docker Hub..."
+          docker push $DOCKER_IMAGE_NAME
