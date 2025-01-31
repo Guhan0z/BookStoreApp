@@ -1,7 +1,7 @@
 name: 'book-store-microservices'
 services:
   catalog-service:
-    image: bookstore-catalog-service
+    image: guhanx/bookstore-catalog-service
     container_name: catalog-service
     environment:
       #- SPRING_PROFILES_ACTIVE=docker
@@ -20,7 +20,7 @@ services:
           memory: 700m
 
   orders-service:
-    image: bookstore-orders-service
+    image: guhanx/bookstore-orders-service
     container_name: orders-service
     environment:
       #- SPRING_PROFILES_ACTIVE=docker
