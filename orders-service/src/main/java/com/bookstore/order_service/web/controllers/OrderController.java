@@ -4,6 +4,7 @@ import com.bookstore.order_service.domain.OrderService;
 import com.bookstore.order_service.domain.SecurityService;
 import com.bookstore.order_service.domain.model.CreateOrderRequest;
 import com.bookstore.order_service.domain.model.CreateOrderResponse;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -17,14 +18,14 @@ public class OrderController {
     private final OrderService orderService;
     private final SecurityService securityService;
 
-    public OrderController(OrderService orderService, SecurityService securityService) {
+    OrderController(OrderService orderService, SecurityService securityService) {
         this.orderService = orderService;
         this.securityService = securityService;
     }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    CreateOrderResponse createOrder(@RequestBody CreateOrderRequest request) {
+    CreateOrderResponse createOrder(@RequestBody @Valid CreateOrderRequest request) {
         String userName = securityService.getLoggedInUsername();
         log.info("Creating order for user {}", userName);
         return orderService.createOrder(userName, request);
