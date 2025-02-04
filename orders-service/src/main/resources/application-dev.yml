@@ -6,3 +6,18 @@ management:
     web:
       exposure:
         include: "*"
+resilience4j:
+  retry:
+    backends:
+      catalog-service:
+        maxAttempts: 2
+        waitDuration: 1s
+  circuitbreaker:
+    backends:
+      catalog-service:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 6
+        minimumNumberOfCalls: 4
+        waitDurationInOpenState: 20s
+        permittedNumberOfCallsInHalfOpenState: 2
+        failureRateThreshold: 50

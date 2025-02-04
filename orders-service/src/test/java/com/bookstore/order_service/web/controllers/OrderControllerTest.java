@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
+import java.math.BigDecimal;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 
@@ -16,11 +18,14 @@ class OrderControllerTest extends AbstractTest {
     class createOrderTest {
         @Test
         void shouldCreateOrder() {
+            getProductByCode("P104", "Book", new BigDecimal("14.50"));
+
             given().contentType(ContentType.JSON)
                     .body(TestDataUtil.createValidOrderRequest())
                     .when()
                     .post("/api/orders/create")
                     .then()
+                    .log().everything()
                     .statusCode(HttpStatus.CREATED.value())
                     .body("orderNumber", notNullValue());
         }

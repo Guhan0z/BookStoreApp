@@ -16,10 +16,10 @@ public class TestDataUtil {
 
     private static final List<String> VAILD_COUNTRIES = Arrays.asList("India", "Germany");
     private static final Set<OrderItemDTO> VALID_ITEMS = Set.of(
-            new OrderItemDTO("P104", "The Fault in Our Stars", new BigDecimal(14.50), 2)
+            new OrderItemDTO("P104", "Book", new BigDecimal("14.50"), 2)
     );
     private static final Set<OrderItemDTO> INVALID_ITEMS = Set.of(
-            new OrderItemDTO("invalid_code", "SOME BOOK", new BigDecimal(1.50), 10)
+            new OrderItemDTO("invalid_code", "SOME BOOK", new BigDecimal("1.50"), 10)
     );
 
     public static CreateOrderRequest createValidOrderRequest() {
