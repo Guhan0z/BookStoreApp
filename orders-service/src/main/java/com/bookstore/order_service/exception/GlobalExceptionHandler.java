@@ -16,6 +16,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     private static final URI NOT_FOUND_TYPE = URI.create("https://api.bookstore.com/errors/not-found");
     private static final URI ISE_FOUND_TYPE = URI.create("https://api.bookstore.com/errors/server-error");
+    private static final URI BAD_REQUEST_TYPE = URI.create("https://api.bookstore.com/errors/bad-request");
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
@@ -39,7 +40,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         problemDetail.setType(ISE_FOUND_TYPE);
         problemDetail.setTitle("Internal Server Error");
-        problemDetail.setProperty("service", "catalog-service");
+        problemDetail.setProperty("service", "orders-service");
         problemDetail.setProperty("error_category", "Generic");
         problemDetail.setProperty("timestamp", Instant.now());
         return problemDetail;
@@ -50,7 +51,19 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
         problemDetail.setType(NOT_FOUND_TYPE);
         problemDetail.setTitle("Product Not Found");
-        problemDetail.setProperty("service", "catalog-service");
+        problemDetail.setProperty("service", "orders-service");
+        problemDetail.setProperty("error_category", "Generic");
+        problemDetail.setProperty("timestamp", Instant.now());
+
+        return problemDetail;
+    }
+
+    @ExceptionHandler(InvalidOrderException.class)
+    ProblemDetail handleInvalidOrderException(InvalidOrderException e) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
+        problemDetail.setType(BAD_REQUEST_TYPE);
+        problemDetail.setTitle("Product code is invalid!");
+        problemDetail.setProperty("service", "orders-service");
         problemDetail.setProperty("error_category", "Generic");
         problemDetail.setProperty("timestamp", Instant.now());
 

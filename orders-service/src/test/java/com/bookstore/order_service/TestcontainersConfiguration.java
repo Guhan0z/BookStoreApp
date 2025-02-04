@@ -3,9 +3,12 @@ package com.bookstore.order_service;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
+import org.springframework.test.context.DynamicPropertyRegistrar;
+import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.containers.RabbitMQContainer;
 import org.testcontainers.utility.DockerImageName;
+import org.wiremock.integrations.testcontainers.WireMockContainer;
 
 @TestConfiguration(proxyBeanMethods = false)
 class TestcontainersConfiguration {
